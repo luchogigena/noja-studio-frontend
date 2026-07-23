@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel admin - Noja Studio</title>
+</head>
+
+<body class="bg-stone-100 min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-pink-600">Noja Studio — Panel admin</h1>
+            <a href="/index.html" class="text-sm text-stone-600 hover:text-pink-600">Volver al catálogo</a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8">
+        <!-- Se muestra SOLO si el usuario no es admin -->
+        <div id="acceso-denegado" class="hidden bg-white rounded-lg shadow-sm p-8 text-center">
+            <p class="text-stone-700 mb-4">No tenés permiso para ver esta página.</p>
+            <a href="/login.html" class="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700">
+                Iniciar sesión
+            </a>
+        </div>
+
+        <!-- Se muestra SOLO si el usuario es admin -->
+        <div id="contenido-admin" class="hidden">
+            <section class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                <h2 id="titulo-formulario" class="text-lg font-semibold text-stone-800 mb-6">Nuevo producto</h2>
+                <form id="form-producto" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5 mt-2">
+                    <input type="hidden" id="producto-id" />
+
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">Nombre</label>
+                        <input id="nombre" required
+                            class="w-full border border-stone-300 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">Categoría</label>
+                        <select id="categoria" required
+                            class="w-full border border-stone-300 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                            <option value="producto terminado">Producto terminado</option>
+                            <option value="material">Material</option>
+                            <option value="workshop">Workshop</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label class="block text-sm font-medium text-stone-700 mb-1">URL de imagen</label>
+                        <input id="imagen" type="url" placeholder="https://ejemplo.com/imagen.jpg"
+                            class="w-full border border-stone-300 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block text-sm font-medium text-stone-700 mb-1">Descripción</label>
+                        <textarea id="descripcion"
+                            class="w-full border border-stone-300 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-pink-400"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">Precio</label>
+                        <input type="number" id="precio" min="0" required
+                            class="w-full border border-stone-300 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">Stock</label>
+                        <input type="number" id="stock" min="0" required
+                            class="w-full border border-stone-300 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+                    </div>
+
+                    <p id="mensaje-form" class="sm:col-span-2 text-sm hidden"></p>
+
+                    <div class="sm:col-span-2 flex gap-3">
+                        <button type="submit"
+                            class="bg-pink-600 text-white font-medium px-4 py-2 rounded-md hover:bg-pink-700">
+                            Guardar
+                        </button>
+                        <button type="button" id="btn-cancelar" class="hidden text-stone-500 px-4 py-2">
+                            Cancelar edición
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-sm p-6">
+                <h2 class="text-lg font-semibold text-stone-800 mb-4">Productos existentes</h2>
+                <div id="lista-productos" class="divide-y divide-stone-200"></div>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="/src/admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito - Noja Studio</title>
+  </head>
+  <body class="bg-stone-100 min-h-screen">
+    <header class="bg-white shadow-sm">
+      <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/index.html"><h1 class="text-2xl font-bold text-pink-600">Noja Studio</h1></a>
+        <a href="/catalogo.html" class="text-sm text-stone-600 hover:text-pink-600">Volver al catálogo</a>
+      </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-8">
+      <h2 class="text-xl font-semibold text-stone-800 mb-6">Mi carrito</h2>
+
+      <p id="mensaje-error" class="text-red-600 mb-4 hidden"></p>
+      <p id="mensaje-exito" class="text-green-600 mb-4 hidden"></p>
+
+      <div id="lista-carrito" class="space-y-4 mb-6"></div>
+
+      <div id="resumen-carrito" class="hidden bg-white rounded-lg shadow-sm p-6">
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-lg font-semibold text-stone-800">Total</span>
+          <span id="total-carrito" class="text-2xl font-bold text-stone-800"></span>
+        </div>
+        <button
+          id="btn-confirmar"
+          class="w-full bg-pink-600 text-white font-medium py-3 rounded-md hover:bg-pink-700 transition"
+        >
+          Confirmar compra
+        </button>
+      </div>
+    </main>
+
+    <script type="module" src="/src/carrito-page.js"></script>
+  </body>
+</html>
